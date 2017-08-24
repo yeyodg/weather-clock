@@ -26,7 +26,7 @@
     </ng-template>
     <ng-template ngbSlide>
     <div class="item">
-      <img class="third-slide" src="http://omicrono.elespanol.com/wp-content/uploads/2016/11/tormenta.jpg" alt="Third slide">
+      <img class="third-slide" src="../../images/c.jpg" alt="Third slide">
       <div class="carousel-caption">
         <h1>Another example headline.</h1>
         <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
@@ -38,11 +38,13 @@
   </ngb-carousel>
 
   <router-outlet></router-outlet>
-
+  <br>
+  <br>
+  <br>
   <!-- FOOTER -->
   <div class="sticky-top">
     <footer >
-      <p class="pull-left"><a href="#">Back to top</a></p>
-      <p>&copy; 2017 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      <p class="pull-left"><a [routerLink]="['/home']">Back to home</a></p>
+      <p class="text-center">&copy; 2017 Company, Inc. &middot;</p>
     </footer>
   </div>

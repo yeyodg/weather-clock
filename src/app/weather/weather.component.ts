@@ -10,31 +10,27 @@ import { HttpService } from '../http.service';
   styles: []
 })
 export class WeatherComponent implements OnInit {
-  searched: boolean = false;
-  data: any = {
-    "name": "Caracas",
-    "main": {"temp": "12"},
-    "weather": [{"main": "Clouds" }]
-  };
-  country: string = "VE";
-  unit: string = "metric";
-  city: string = "caracas";
+  public searched: boolean = false;
+  public loading = false;
+  public data: any;
   constructor(private http: HttpService) { }
 
   ngOnInit() {
-  	console.log(this.data.name);
-    console.log(this.data.main.temp);
-    console.log(this.data.weather[0].main);
   }
 
   onCheckWheather(form: NgForm){
-  	// this.http.getWeather(form.value.city.toLowerCase(), form.value.country, form.value.unit)
-   //  .subscribe((data) => {
-   //    this.data = data; 
-   //    this.searched = !this.searched;
-   //    console.log(this.data);
-
-   //  });
+    this.loading = true;
+  	this.http.getWeather(form.value.city.toLowerCase(), form.value.country, form.value.unit)
+    .subscribe(
+      (data) => {
+      this.data = data; 
+      this.searched = true;
+      this.loading = false;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
    
   }
 

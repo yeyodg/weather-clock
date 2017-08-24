@@ -8,18 +8,25 @@
   <div class="row">
     <div class="col-lg-4 text-center">
       <br>
-      <img class="rounded-circle" src="http://images.all-free-download.com/images/graphiclarge/blue_background_clock_icon_vector_280580.jpg" alt="Generic placeholder image" width="140" height="140" (click)="goClock()">
-      <h2 (click)="goClock()" >Clock</h2>
+      <a [routerLink]="['/clock']">
+        <img class="rounded-circle" src="../../../images/icons/clock.jpg" alt="Clock" width="140" height="140">
+        <h2>Clock</h2>
+      </a>
+      
       <br>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4 text-center">
-      <img class="rounded-circle" src="https://pbs.twimg.com/profile_images/475446520578207745/HBom6Kjp_400x400.png" alt="Generic placeholder image"  width="170" height="170"(click)="goWeather()">
-      <h2 (click)="goWeather()">Weather</h2>
+      <a [routerLink]="['/weather']">
+        <img class="rounded-circle" src="../../../images/icons/weather.png" alt="Weather"  width="170" height="170">
+        <h2>Weather</h2>
+      </a>
     </div><!-- /.col-lg-4 -->
     <div class="col-lg-4 text-center">
       <br>
-      <img class="rounded-circle" src="http://icons.iconarchive.com/icons/vcferreira/firefox-os/256/gallery-icon.png" alt="Generic placeholder image" width="140" height="140" (click)="goGallery()">
-      <h2 (click)="goGallery()">Gallery</h2>
+      <a [routerLink]="['/gallery']">
+        <img class="rounded-circle" src="../../../images/icons/gallery.png" alt="Gallery" width="140" height="140">
+        <h2>Gallery</h2>
+      </a>
     </div><!-- /.col-lg-4 -->
   </div><!-- /.row -->
   </div><!-- /.container -->

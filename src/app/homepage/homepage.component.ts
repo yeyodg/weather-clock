@@ -30,22 +30,9 @@ import { Router } from '@angular/router';
 })
 export class HomepageComponent implements OnInit {
 
-	// state: string = 'small';
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
-  goClock(){
-  	this.router.navigate(['/clock']);
-  }
-  goWeather(){
-  	this.router.navigate(['/weather']);
-  }
-  goGallery(){
-  	this.router.navigate(['/gallery']);
-  }
-  // animateMe(){
-  // 	this.state = (this.state === 'small' ? 'large': 'small');
-  // }
 
 }
