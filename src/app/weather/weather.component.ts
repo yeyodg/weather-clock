@@ -13,6 +13,8 @@ export class WeatherComponent implements OnInit {
   public searched: boolean = false;
   public loading = false;
   public data: any;
+  public mapUrl: string = 'https://www.google.com/maps/embed/v1/search?q=caracas&key=AIzaSyAcGtrSFPk3Mrng_37QhAS2qBPwpQDsU6s';
+  public imageUrl: string = 'http://complotmagazine.com/wp-content/uploads/2016/03/BugattiChiron-1200x8011-1200x700.jpg';
   constructor(private http: HttpService) { }
 
   ngOnInit() {
@@ -23,7 +25,7 @@ export class WeatherComponent implements OnInit {
   	this.http.getWeather(form.value.city.toLowerCase(), form.value.country, form.value.unit)
     .subscribe(
       (data) => {
-      this.data = data; 
+      this.data = data;
       this.searched = true;
       this.loading = false;
       },
@@ -31,7 +33,7 @@ export class WeatherComponent implements OnInit {
         console.log(error);
       }
     );
-   
+
   }
 
 

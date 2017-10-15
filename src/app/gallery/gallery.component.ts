@@ -37,9 +37,9 @@ export class GalleryComponent{
 
   constructor(private modalService: NgbModal, private _lightbox: Lightbox) { 
   	for (let i = 107; i <= 109; i++) {
-  	      const src = './../../images/icons/' + i + '.png';
+  	      const src = './images/icons/' + i + '.png';
   	      const caption = 'Image ' + i + ' caption here';
-  	      const thumb = './../../images/icons/' + i + '-thumb.png';
+  	      const thumb = './images/icons/' + i + '-thumb.png';
   	      const album = {
   	         src: src,
   	         caption: caption,

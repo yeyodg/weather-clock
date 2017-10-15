@@ -269,7 +269,7 @@
 					  <option value="imperial"> Fahrenheit</option>
 					</select>
 				</div>
-					<br>		
+					<br>
 					<button class="btn btn-primary" type="submit" [disabled]="!f.valid">Check Weather</button>
 					<a class="btn btn-danger" [routerLink]="['/home']">Back</a>
 			</form>
@@ -289,7 +289,7 @@
 			  			<h3>Weather</h3>
 			  			<div class="form-inline">
 			  				<p>{{data?.weather[0].main}}</p>
-			  				<img src="../../../images/icons/{{data?.weather[0].main}}.png" class="h-25 w-25 ml-5" alt="">
+			  				<img src="./images/icons/{{data?.weather[0].main}}.png" class="h-25 w-25 ml-5" alt="">
 			  			</div>
 			  			<br>
 			  			<h3>Temperature</h3>
@@ -308,6 +308,16 @@
 			  </div>
 			</div>
 			<h1 *ngIf="!loading&&!searched" class="text-center">Please search the city</h1>
+		</div>
+		<br>
+		<div class="container">
+
+			<div id="map" style="width: 413px; height: 300px;"></div>
+			<input type="text" name="Prueba" [value]="mapUrl">
+			<!-- <img src="http://complotmagazine.com/wp-content/uploads/2016/03/BugattiChiron-1200x8011-1200x700.jpg" alt="carro1"> -->
+			<img [src]="imageUrl" alt="Carro2">
+			<iframe width="600" height="450" frameborder="0" style="border:0"
+			[src]="mapUrl" allowfullscreen></iframe>
 		</div>
 	</div>
 </div>
