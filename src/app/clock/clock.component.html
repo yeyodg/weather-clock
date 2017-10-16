@@ -4,11 +4,11 @@
 			<form (ngSubmit)="onCheckTime(f)" #f="ngForm">
 				<div class="form-group">
 					<label for="city">City:</label>
-					<input type="text" name="city" id="city" class="form-control" required [ngModel]="city">
+					<input type="text" name="city" id="city" class="form-control" required>
 				</div>
 				<div class="form-group">
 					<label for="country">Country:</label>
-					<select class="form-control" name="country" id="country" [ngModel]="country" required>
+					<select class="form-control" name="country" id="country" required>
 						<option value="AF">Afghanistan</option>
 						<option value="AX">Åland Islands</option>
 						<option value="AL">Albania</option>
