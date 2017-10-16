@@ -45,12 +45,6 @@ export class WeatherComponent implements OnInit {
           console.log(error);
         }
       );
-
     });
   }
-
-  onWatchCenter () {
-    console.log(this.address);
-  }
-
 }
