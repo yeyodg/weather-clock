@@ -1,19 +1,3 @@
-<!-- Clave de reloj: AIzaSyAVdZNmru4Nh3sNNjEbETFzjobnnNSW8Pk -->
-<!-- https://maps.googleapis.com/maps/api/timezone/json?location=38.908133,-77.047119&timestamp=1458000000&key=AIzaSyAVdZNmru4Nh3sNNjEbETFzjobnnNSW8Pk -->
-
-<!-- Clave de mapa: AIzaSyCcj5-vYjN0W9jxetUrvRAoF10DvGWpzFQ -->
-<!-- Clave de Static mapa: AIzaSyAneiEEfwIxe5ce9EoXgyh3ON9UfGPANIY -->
-
-
-<!-- https://maps.googleapis.com/maps/api/staticmap?center=Australia&size=640x400&style=element:labels|visibility:off&style=element:geometry.stroke|visibility:off&style=feature:landscape|element:geometry|saturation:-100&style=feature:water|saturation:-100|invert_lightness:true&key=AIzaSyAneiEEfwIxe5ce9EoXgyh3ON9UfGPANIY -->
-
-
-<!-- <iframe
-  width="600"
-  height="450"
-  frameborder="0" style="border:0"
-  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCcj5-vYjN0W9jxetUrvRAoF10DvGWpzFQ&q=Space+Needle,Seattle+WA" allowfullscreen>
-</iframe> -->
 <div class="container">
 	<div class="row">
 		<div class="col-md-5">
@@ -276,16 +260,13 @@
 						<option value="ZW">Zimbabwe</option>
 					</select>
 				</div>
-				<br>		
+				<br>
 				<button class="btn btn-primary" type="submit" [disabled]="!f.valid">Check Time</button>
 				<a class="btn btn-danger" [routerLink]="['/home']">Back</a>
 			</form>
 		</div>
 		<div class="col-md-7" *ngIf="searched">
-			<div class="alert alert-warning text-center" role="alert" *ngIf="searched&&(country!=f.value.country || city!=f.value.city)">
-			  There is not match for {{f.value.city}} {{f.value.country}}, you may meant {{data?.name}} {{data?.sys.country}}
-			</div>
-			<h2 class="text-center">{{city}}, {{country}}</h2>
+			<h2 class="text-center">{{formatedAddress}}</h2>
 			<section id="contReloj" class="rounded text-center">
 				<p id="pHoras">{{hours}}</p>
 		    <p>:</p>
@@ -297,6 +278,10 @@
 		<div class="col-md-7 text-center" *ngIf="!searched">
 			<h1>Please search the city</h1>
 		</div>
+	</div>
+	<div class="container">
+		<br>
+		<ngui-map [center]="address" [zoom]="zoom"></ngui-map>
 	</div>
 </div>
 <br>

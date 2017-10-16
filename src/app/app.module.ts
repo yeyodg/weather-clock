@@ -16,6 +16,7 @@ import { GalleryComponent, NgbdModalContent } from './gallery/gallery.component'
 import { HomepageComponent } from './homepage/homepage.component';
 
 import { LightboxModule } from 'angular2-lightbox';
+import { NguiMapModule} from '@ngui/map';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { LightboxModule } from 'angular2-lightbox';
     routing,
     NgbModule.forRoot(),
     LoadingModule,
-    LightboxModule
+    LightboxModule,
+    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyDP0CaXJm2Sdc8KUiSYEnvl1gLi8Spmxto'})
   ],
   providers: [HttpService],
   bootstrap: [AppComponent],

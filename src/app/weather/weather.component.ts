@@ -13,8 +13,9 @@ export class WeatherComponent implements OnInit {
   public searched: boolean = false;
   public loading = false;
   public data: any;
-  public mapUrl: string = 'https://www.google.com/maps/embed/v1/search?q=caracas&key=AIzaSyAcGtrSFPk3Mrng_37QhAS2qBPwpQDsU6s';
-  public imageUrl: string = 'http://complotmagazine.com/wp-content/uploads/2016/03/BugattiChiron-1200x8011-1200x700.jpg';
+  public formatedAddress: string;
+  public address: string = 'Caracas';
+  public zoom: number = 1;
   constructor(private http: HttpService) { }
 
   ngOnInit() {
@@ -22,19 +23,34 @@ export class WeatherComponent implements OnInit {
 
   onCheckWheather(form: NgForm){
     this.loading = true;
-  	this.http.getWeather(form.value.city.toLowerCase(), form.value.country, form.value.unit)
-    .subscribe(
-      (data) => {
-      this.data = data;
-      this.searched = true;
-      this.loading = false;
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    this.address = form.value.city + ', ' + form.value.country;
+    this.zoom = 9;
+    this.http.getCoordinates(this.address)
+    .subscribe(data => {
+      console.log('Coordinates response')
+      console.log(data)
+      const lat = data.results[0].geometry.location.lat;
+      const lng = data.results[0].geometry.location.lng;
+      this.formatedAddress = data.results[0].formatted_address;
+      this.http.getWeather(lat, lng, form.value.unit)
+      .subscribe(
+        (data) => {
+        console.log('Weather response')
+        console.log(data)
+        this.data = data;
+        this.searched = true;
+        this.loading = false;
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
 
+    });
   }
 
+  onWatchCenter () {
+    console.log(this.address);
+  }
 
 }

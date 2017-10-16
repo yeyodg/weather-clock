@@ -3,17 +3,15 @@ import { NgForm } from '@angular/forms';
 
 import { HttpService } from '../http.service';
 
-
-
 @Component({
   selector: 'we-clock',
   templateUrl: './clock.component.html',
   styles: [
      `
     @font-face {
-        
+
         font-weight: normal;
-        font-style: normthis.     
+        font-style: normthis.
     }
 
     #contReloj{
@@ -38,25 +36,33 @@ export class ClockComponent implements OnInit {
   public hours: string;
   public minutes: string;
   public seconds: string;
-  public city: string;
-  public country: string;
+  public address: string = 'Caracas';
+  public zoom: number = 1;
   public searched: boolean = false;
+  public formatedAddress: string;
   constructor(private http: HttpService) {}
 
   ngOnInit() {
   }
 
-  onCheckTime(f: NgForm){
+  onCheckTime(form: NgForm){
     this.searched = true;
     let miliseconds, localOffset, placeOffset, time;
-  	this.http.getWeather(f.value.city, f.value.country, "metric")
+    this.address = form.value.city + ', ' + form.value.country;
+    this.zoom = 9;
+  	this.http.getCoordinates(this.address)
   	.subscribe(
   		(data) => {
-        this.city = data.name;
-        this.country =  data.sys.country;
-  			this.http.getTime(data.coord.lon, data.coord.lat)
+        console.log('Coordinates response')
+        console.log(data)
+        const lat = data.results[0].geometry.location.lat;
+        const lng = data.results[0].geometry.location.lng;
+        this.formatedAddress = data.results[0].formatted_address;
+  			this.http.getTime(lng, lat)
   			.subscribe(
           (data) => {
+            console.log('Time Zone response')
+            console.log(data)
             let date = new Date();
             placeOffset = data.rawOffset * 1000;
             localOffset = date.getTimezoneOffset() * 1000 * 60;
@@ -82,7 +88,7 @@ export class ClockComponent implements OnInit {
   		(error) => console.log(error)
   	);
   }
-  
+
 
 
 }

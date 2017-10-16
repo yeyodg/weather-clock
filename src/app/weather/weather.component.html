@@ -275,13 +275,11 @@
 			</form>
 		</div>
 		<div class="col-md-7">
-			<div class="alert alert-warning text-center" role="alert" *ngIf="searched&&(data?.sys.country!=f.value.country)">
-			  There is not match for {{f.value.city}} {{f.value.country}}, you may meant {{data?.name}} {{data?.sys.country}}
-			</div>
+
 			<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
 			<div class="panel panel-secundary" *ngIf="!loading&&searched">
 			  <div class="panel-heading">
-			    <h2 class="panel-title text-center">{{data?.name}} {{data?.sys.country}}</h2>
+			    <h2 class="panel-title text-center">{{formatedAddress}}</h2>
 			  </div>
 			  <div class="panel-body">
 			  	<div class="row">
@@ -311,13 +309,11 @@
 		</div>
 		<br>
 		<div class="container">
-
-			<div id="map" style="width: 413px; height: 300px;"></div>
-			<input type="text" name="Prueba" [value]="mapUrl">
-			<!-- <img src="http://complotmagazine.com/wp-content/uploads/2016/03/BugattiChiron-1200x8011-1200x700.jpg" alt="carro1"> -->
-			<img [src]="imageUrl" alt="Carro2">
-			<iframe width="600" height="450" frameborder="0" style="border:0"
-			[src]="mapUrl" allowfullscreen></iframe>
+			<br>
+			<ngui-map [center]="address" [zoom]="zoom">
+				<marker *ngIf="searched" [position]="address"></marker>
+			</ngui-map>
+			<button class="b-btn" (click)="onWatchCenter()">Center</button>
 		</div>
 	</div>
 </div>
